@@ -1,26 +1,70 @@
+/* ---------------------- MAIN SERVICE TYPES ---------------------- */
 export const serviceTypes = [
   {
-    id: "car-detailing",
-    name: "Car Detailing",
-    vehicleTypes: ["sedan", "suv", "truck", "van"],
+    id: "car",
+    name: "Car",
+    // top-level vehicleTypes that map to this service; variants give per-vehicle pricing
+    vehicleTypes: ["car", "sedan", "suv", "truck", "van"],
+    // variants allow separate packages & additionalServices for Sedan / SUV / Truck / Van
     variants: [
       {
         id: "sedan",
         name: "Sedan",
         vehicleTypes: ["sedan"],
         packages: [
-          { id: "sedan-interior-basic", name: "Basic Interior", price: 190, includes: ["Vacuum Carpets & Floor Mats", "Wipe Down Dashboard, Console & Cupholders", "Clean Windows (Inside)", "Clean Door Panels & Pockets", "Light Dusting", "Air Freshener"] },
-          { id: "sedan-interior-premium", name: "Premium Interior", price: 230, includes: ["Full Vacuum Carpets, Mats & Seats", "Shampoo & Deep Clean Upholstery + Carpets", "Leather/Vinyl Cleaning & Conditioning", "Dashboard, Console & Trim Detailed", "Interior Windows & Mirrors", "Door Panels & Cupholders Sanitized", "Odor Elimination"] },
-          { id: "sedan-exterior-basic", name: "Basic Exterior", price: 170, includes: ["Biodegradable Soap Wash", "Rinse & Pressure Clean", "Hand Dry with Microfiber Towels", "Clean Windows & Mirrors (Outside)", "Basic Tire Shine"] },
-          { id: "sedan-exterior-premium", name: "Premium Exterior", price: 200, includes: ["Foam Cannon Wash", "Clay Bar Treatment", "Hand Wax/Sealant", "Windows & Mirrors Polished", "Wheel & Tire Deep Cleaning + Shine", "Bug & Tar Removal"] },
-          { id: "sedan-full-basic", name: "Basic Full", price: 230, includes: ["Basic Interior + Basic Exterior Packages"] },
-          { id: "sedan-full-premium", name: "Premium Full", price: 310, includes: ["Premium Interior + Premium Exterior Packages"] }
+          {
+            id: "sedan-basic-full",
+            name: "Basic Full Package",
+            price: 200,
+            description: "Basic interior and exterior package for sedans",
+            pricingType: "fixed",
+            includes: ["Basic Interior Package", "Basic Exterior Package"]
+          },
+          {
+            id: "sedan-premium-full",
+            name: "Premium Full Package",
+            price: 270,
+            description: "Premium interior and exterior package for sedans",
+            pricingType: "fixed",
+            includes: ["Premium Interior Package", "Premium Exterior Package"]
+          },
+          {
+            id: "sedan-basic-interior",
+            name: "Basic Interior Only",
+            price: 160,
+            description: "Basic interior package only (sedan)",
+            pricingType: "fixed",
+            includes: ["Basic Interior Package"]
+          },
+          {
+            id: "sedan-premium-interior",
+            name: "Premium Interior Only",
+            price: 200,
+            description: "Premium interior package only (sedan)",
+            pricingType: "fixed",
+            includes: ["Premium Interior Package"]
+          },
+          {
+            id: "sedan-basic-exterior",
+            name: "Basic Exterior Only",
+            price: 150,
+            description: "Basic exterior package only (sedan)",
+            pricingType: "fixed",
+            includes: ["Basic Exterior Package"]
+          },
+          {
+            id: "sedan-premium-exterior",
+            name: "Premium Exterior Only",
+            price: 180,
+            description: "Premium exterior package only (sedan)",
+            pricingType: "fixed",
+            includes: ["Premium Exterior Package"]
+          }
         ],
         additionalServices: [
-          { id: "odor_removal", name: "Odor Removal", price: 50 },
-          { id: "pet_hair", name: "Pet Hair Removal", price: 40 },
-          { id: "engine_cleaning", name: "Engine Cleaning", price: 70 },
-          { id: "headlight_restore", name: "Headlight Restoration", price: 60 }
+          { id: "sedan-pet-hair", name: "Pet Hair Removal", price: 20, description: "Remove embedded pet hair (sedan)" },
+          { id: "sedan-odor-elimination", name: "Odor Elimination", price: 30, description: "Neutralize odors (sedan)" },
+          { id: "sedan-headlight-restoration", name: "Headlight Restoration", price: 40, description: "Restore headlights (sedan)" }
         ]
       },
       {
@@ -28,18 +72,59 @@ export const serviceTypes = [
         name: "SUV",
         vehicleTypes: ["suv"],
         packages: [
-          { id: "suv-interior-basic", name: "Basic Interior", price: 180, includes: ["Vacuum Carpets & Floor Mats", "Wipe Down Dashboard, Console & Cupholders", "Clean Windows (Inside)", "Clean Door Panels & Pockets", "Light Dusting", "Air Freshener"] },
-          { id: "suv-interior-premium", name: "Premium Interior", price: 220, includes: ["Full Vacuum Carpets, Mats & Seats", "Shampoo & Deep Clean Upholstery + Carpets", "Leather/Vinyl Cleaning & Conditioning", "Dashboard, Console & Trim Detailed", "Interior Windows & Mirrors", "Door Panels & Cupholders Sanitized", "Odor Elimination"] },
-          { id: "suv-exterior-basic", name: "Basic Exterior", price: 160, includes: ["Biodegradable Soap Wash", "Rinse & Pressure Clean", "Hand Dry with Microfiber Towels", "Clean Windows & Mirrors (Outside)", "Basic Tire Shine"] },
-          { id: "suv-exterior-premium", name: "Premium Exterior", price: 190, includes: ["Foam Cannon Wash", "Clay Bar Treatment", "Hand Wax/Sealant", "Windows & Mirrors Polished", "Wheel & Tire Deep Cleaning + Shine", "Bug & Tar Removal"] },
-          { id: "suv-full-basic", name: "Basic Full", price: 220, includes: ["Basic Interior + Basic Exterior Packages"] },
-          { id: "suv-full-premium", name: "Premium Full", price: 300, includes: ["Premium Interior + Premium Exterior Packages"] }
+          {
+            id: "suv-basic-full",
+            name: "Basic Full Package",
+            price: 240,
+            description: "Basic interior and exterior package for SUVs",
+            pricingType: "fixed",
+            includes: ["Basic Interior Package", "Basic Exterior Package"]
+          },
+          {
+            id: "suv-premium-full",
+            name: "Premium Full Package",
+            price: 330,
+            description: "Premium interior and exterior package for SUVs",
+            pricingType: "fixed",
+            includes: ["Premium Interior Package", "Premium Exterior Package"]
+          },
+          {
+            id: "suv-basic-interior",
+            name: "Basic Interior Only",
+            price: 200,
+            description: "Basic interior package only (SUV)",
+            pricingType: "fixed",
+            includes: ["Basic Interior Package"]
+          },
+          {
+            id: "suv-premium-interior",
+            name: "Premium Interior Only",
+            price: 250,
+            description: "Premium interior package only (SUV)",
+            pricingType: "fixed",
+            includes: ["Premium Interior Package"]
+          },
+          {
+            id: "suv-basic-exterior",
+            name: "Basic Exterior Only",
+            price: 180,
+            description: "Basic exterior package only (SUV)",
+            pricingType: "fixed",
+            includes: ["Basic Exterior Package"]
+          },
+          {
+            id: "suv-premium-exterior",
+            name: "Premium Exterior Only",
+            price: 210,
+            description: "Premium exterior package only (SUV)",
+            pricingType: "fixed",
+            includes: ["Premium Exterior Package"]
+          }
         ],
         additionalServices: [
-          { id: "odor_removal", name: "Odor Removal", price: 50 },
-          { id: "pet_hair", name: "Pet Hair Removal", price: 40 },
-          { id: "engine_cleaning", name: "Engine Cleaning", price: 70 },
-          { id: "headlight_restore", name: "Headlight Restoration", price: 60 }
+          { id: "suv-pet-hair", name: "Pet Hair Removal", price: 30, description: "Remove embedded pet hair (SUV)" },
+          { id: "suv-odor-elimination", name: "Odor Elimination", price: 40, description: "Neutralize odors (SUV)" },
+          { id: "suv-headlight-restoration", name: "Headlight Restoration", price: 50, description: "Restore headlights (SUV)" }
         ]
       },
       {
@@ -47,18 +132,59 @@ export const serviceTypes = [
         name: "Truck",
         vehicleTypes: ["truck"],
         packages: [
-          { id: "truck-interior-basic", name: "Basic Interior", price: 180, includes: ["Vacuum Carpets & Floor Mats", "Wipe Down Dashboard, Console & Cupholders", "Clean Windows (Inside)", "Clean Door Panels & Pockets", "Light Dusting", "Air Freshener"] },
-          { id: "truck-interior-premium", name: "Premium Interior", price: 220, includes: ["Full Vacuum Carpets, Mats & Seats", "Shampoo & Deep Clean Upholstery + Carpets", "Leather/Vinyl Cleaning & Conditioning", "Dashboard, Console & Trim Detailed", "Interior Windows & Mirrors", "Door Panels & Cupholders Sanitized", "Odor Elimination"] },
-          { id: "truck-exterior-basic", name: "Basic Exterior", price: 190, includes: ["Biodegradable Soap Wash", "Rinse & Pressure Clean", "Hand Dry with Microfiber Towels", "Clean Windows & Mirrors (Outside)", "Basic Tire Shine"] },
-          { id: "truck-exterior-premium", name: "Premium Exterior", price: 210, includes: ["Foam Cannon Wash", "Clay Bar Treatment", "Hand Wax/Sealant", "Windows & Mirrors Polished", "Wheel & Tire Deep Cleaning + Shine", "Bug & Tar Removal"] },
-          { id: "truck-full-basic", name: "Basic Full", price: 250, includes: ["Basic Interior + Basic Exterior Packages"] },
-          { id: "truck-full-premium", name: "Premium Full", price: 320, includes: ["Premium Interior + Premium Exterior Packages"] }
+          {
+            id: "truck-basic-full",
+            name: "Basic Full Package",
+            price: 260,
+            description: "Basic interior and exterior package for trucks",
+            pricingType: "fixed",
+            includes: ["Basic Interior Package", "Basic Exterior Package"]
+          },
+          {
+            id: "truck-premium-full",
+            name: "Premium Full Package",
+            price: 350,
+            description: "Premium interior and exterior package for trucks",
+            pricingType: "fixed",
+            includes: ["Premium Interior Package", "Premium Exterior Package"]
+          },
+          {
+            id: "truck-basic-interior",
+            name: "Basic Interior Only",
+            price: 210,
+            description: "Basic interior package only (truck)",
+            pricingType: "fixed",
+            includes: ["Basic Interior Package"]
+          },
+          {
+            id: "truck-premium-interior",
+            name: "Premium Interior Only",
+            price: 260,
+            description: "Premium interior package only (truck)",
+            pricingType: "fixed",
+            includes: ["Premium Interior Package"]
+          },
+          {
+            id: "truck-basic-exterior",
+            name: "Basic Exterior Only",
+            price: 200,
+            description: "Basic exterior package only (truck)",
+            pricingType: "fixed",
+            includes: ["Basic Exterior Package"]
+          },
+          {
+            id: "truck-premium-exterior",
+            name: "Premium Exterior Only",
+            price: 240,
+            description: "Premium exterior package only (truck)",
+            pricingType: "fixed",
+            includes: ["Premium Exterior Package"]
+          }
         ],
         additionalServices: [
-          { id: "odor_removal", name: "Odor Removal", price: 50 },
-          { id: "pet_hair", name: "Pet Hair Removal", price: 40 },
-          { id: "engine_cleaning", name: "Engine Cleaning", price: 70 },
-          { id: "headlight_restore", name: "Headlight Restoration", price: 60 }
+          { id: "truck-pet-hair", name: "Pet Hair Removal", price: 35, description: "Remove embedded pet hair (truck)" },
+          { id: "truck-odor-elimination", name: "Odor Elimination", price: 45, description: "Neutralize odors (truck)" },
+          { id: "truck-headlight-restoration", name: "Headlight Restoration", price: 55, description: "Restore headlights (truck)" }
         ]
       },
       {
@@ -66,474 +192,513 @@ export const serviceTypes = [
         name: "Van",
         vehicleTypes: ["van"],
         packages: [
-          { id: "van-interior-basic", name: "Basic Interior", price: 210, includes: ["Vacuum Carpets & Floor Mats", "Wipe Down Dashboard, Console & Cupholders", "Clean Windows (Inside)", "Clean Door Panels & Pockets", "Light Dusting", "Air Freshener"] },
-          { id: "van-interior-premium", name: "Premium Interior", price: 240, includes: ["Full Vacuum Carpets, Mats & Seats", "Shampoo & Deep Clean Upholstery + Carpets", "Leather/Vinyl Cleaning & Conditioning", "Dashboard, Console & Trim Detailed", "Interior Windows & Mirrors", "Door Panels & Cupholders Sanitized", "Odor Elimination"] },
-          { id: "van-exterior-basic", name: "Basic Exterior", price: 190, includes: ["Biodegradable Soap Wash", "Rinse & Pressure Clean", "Hand Dry with Microfiber Towels", "Clean Windows & Mirrors (Outside)", "Basic Tire Shine"] },
-          { id: "van-exterior-premium", name: "Premium Exterior", price: 240, includes: ["Foam Cannon Wash", "Clay Bar Treatment", "Hand Wax/Sealant", "Windows & Mirrors Polished", "Wheel & Tire Deep Cleaning + Shine", "Bug & Tar Removal"] },
-          { id: "van-full-basic", name: "Basic Full", price: 220, includes: ["Basic Interior + Basic Exterior Packages"] },
-          { id: "van-full-premium", name: "Premium Full", price: 300, includes: ["Premium Interior + Premium Exterior Packages"] }
+          {
+            id: "van-basic-full",
+            name: "Basic Full Package",
+            price: 230,
+            description: "Basic interior and exterior package for vans",
+            pricingType: "fixed",
+            includes: ["Basic Interior Package", "Basic Exterior Package"]
+          },
+          {
+            id: "van-premium-full",
+            name: "Premium Full Package",
+            price: 320,
+            description: "Premium interior and exterior package for vans",
+            pricingType: "fixed",
+            includes: ["Premium Interior Package", "Premium Exterior Package"]
+          },
+          {
+            id: "van-basic-interior",
+            name: "Basic Interior Only",
+            price: 190,
+            description: "Basic interior package only (van)",
+            pricingType: "fixed",
+            includes: ["Basic Interior Package"]
+          },
+          {
+            id: "van-premium-interior",
+            name: "Premium Interior Only",
+            price: 230,
+            description: "Premium interior package only (van)",
+            pricingType: "fixed",
+            includes: ["Premium Interior Package"]
+          },
+          {
+            id: "van-basic-exterior",
+            name: "Basic Exterior Only",
+            price: 170,
+            description: "Basic exterior package only (van)",
+            pricingType: "fixed",
+            includes: ["Basic Exterior Package"]
+          },
+          {
+            id: "van-premium-exterior",
+            name: "Premium Exterior Only",
+            price: 205,
+            description: "Premium exterior package only (van)",
+            pricingType: "fixed",
+            includes: ["Premium Exterior Package"]
+          }
         ],
         additionalServices: [
-          { id: "odor_removal", name: "Odor Removal", price: 50 },
-          { id: "pet_hair", name: "Pet Hair Removal", price: 40 },
-          { id: "engine_cleaning", name: "Engine Cleaning", price: 70 },
-          { id: "headlight_restore", name: "Headlight Restoration", price: 60 }
+          { id: "van-pet-hair", name: "Pet Hair Removal", price: 28, description: "Remove embedded pet hair (van)" },
+          { id: "van-odor-elimination", name: "Odor Elimination", price: 38, description: "Neutralize odors (van)" },
+          { id: "van-headlight-restoration", name: "Headlight Restoration", price: 48, description: "Restore headlights (van)" }
         ]
       }
     ]
   },
   {
-    id: "boat-detailing",
-    name: "Boat Detailing",
+    id: "boat",
+    name: "Boat",
     vehicleTypes: ["boat"],
     packages: [
-      { id: "boat-interior", name: "Boat Interior", price: 19, pricingType: "perFoot", includes: ["Vacuum Carpets, Seats & Storage", "..."] },
-      { id: "boat-exterior", name: "Boat Exterior", price: 23, pricingType: "perFoot", includes: ["Pressure Rinse Hull & Deck", "..."] },
-      { id: "boat-full", name: "Boat Full", price: 35, pricingType: "perFoot", includes: ["Full Interior + Full Exterior Packages"] }
+      {
+        id: "boat-full",
+        name: "Full Boat Service",
+        price: 35,
+        description: "Complete boat interior and exterior detailing",
+        pricingType: "perFoot",
+        includes: ["Boat Interior Services", "Boat Exterior Services"]
+      },
+      {
+        id: "boat-interior",
+        name: "Boat Interior Only",
+        price: 19,
+        description: "Boat interior detailing only",
+        pricingType: "perFoot",
+        includes: ["Boat Interior Services"]
+      },
+      {
+        id: "boat-exterior",
+        name: "Boat Exterior Only",
+        price: 23,
+        description: "Boat exterior detailing only",
+        pricingType: "perFoot",
+        includes: ["Boat Exterior Services"]
+      }
     ],
-    additionalServices: []
+    additionalServices: [
+      { id: "boat-uv-protection", name: "UV Protection Coating", price: 150, description: "Premium UV protection for marine environment" },
+      { id: "boat-mildew-treatment", name: "Mildew Treatment", price: 75, description: "Anti-mildew treatment for marine conditions" }
+    ]
   },
   {
-    id: "rv-detailing",
-    name: "RV Detailing",
+    id: "jet-ski",
+    name: "Jet Ski",
+    vehicleTypes: ["jet-ski"],
+    packages: [
+      {
+        id: "jet-ski-full",
+        name: "Jet Ski Full Detailing",
+        price: 35,
+        description: "Complete jet ski detailing package (priced per foot)",
+        pricingType: "perFoot", // changed to perFoot as requested
+        includes: ["Jet Ski Exterior Services", "Jet Ski Interior/Functional Areas"]
+      }
+    ],
+    additionalServices: [
+      { id: "jet-ski-rust-protection", name: "Rust Protection", price: 60, description: "Anti-rust treatment for saltwater protection" }
+    ]
+  },
+  {
+    id: "rv",
+    name: "RV",
     vehicleTypes: ["rv"],
     packages: [
-      { id: "rv-interior", name: "RV Interior", price: 25, pricingType: "perFoot", includes: ["Vacuum Carpets, Upholstery & Floors", "..."] },
-      { id: "rv-exterior", name: "RV Exterior", price: 25, pricingType: "perFoot", includes: ["Pressure Wash Roof, Sides & Awning", "..."] },
-      { id: "rv-full", name: "RV Full", price: 40, pricingType: "perFoot", includes: ["Full Interior + Full Exterior Packages"] }
+      {
+        id: "rv-full",
+        name: "Full RV Service",
+        price: 40,
+        description: "Complete RV interior and exterior detailing",
+        pricingType: "perFoot",
+        includes: ["RV Interior Services", "RV Exterior Services"]
+      },
+      {
+        id: "rv-interior",
+        name: "RV Interior Only",
+        price: 25,
+        description: "RV interior detailing only",
+        pricingType: "perFoot",
+        includes: ["RV Interior Services"]
+      },
+      {
+        id: "rv-exterior",
+        name: "RV Exterior Only",
+        price: 25,
+        description: "RV exterior detailing only",
+        pricingType: "perFoot",
+        includes: ["RV Exterior Services"]
+      }
     ],
-    additionalServices: []
+    additionalServices: [
+      { id: "rv-roof-treatment", name: "Roof Sealant Treatment", price: 120, description: "Professional roof sealing and protection" },
+      { id: "rv-tank-cleaning", name: "Water Tank Cleaning", price: 80, description: "Fresh water tank cleaning and sanitization" }
+    ]
   },
   {
-    id: "bike-detailing",
-    name: "Bike Detailing",
-    vehicleTypes: ["bike"],
+    id: "motorcycle",
+    name: "Motorcycle",
+    vehicleTypes: ["motorcycle"],
     packages: [
-      { id: "bike-full", name: "Bike Full Detailing", price: 170, includes: ["Pressure Rinse Frame, Tank, Fenders", "..."] }
+      {
+        id: "bike-full",
+        name: "Full Bike Detailing",
+        price: 170,
+        description: "Complete motorcycle detailing package",
+        pricingType: "fixed",
+        includes: ["Bike Exterior Services", "Bike Detailing & Protection"]
+      }
     ],
-    additionalServices: []
+    additionalServices: [
+      { id: "bike-chain-service", name: "Chain Service", price: 30, description: "Complete chain cleaning and lubrication" },
+      { id: "bike-chrome-polish", name: "Chrome Polish", price: 45, description: "Premium chrome polishing and protection" }
+    ]
   }
 ];
 
-export const timeSlots = ["9:00 AM - 11:00 AM", "11:00 AM - 1:00 PM", "1:00 PM - 3:00 PM", "3:00 PM - 5:00 PM"];
+/* ---------------------- VEHICLE TYPES ---------------------- */
+export const vehicleTypes = [
+  { id: "car", name: "Car" },
+  { id: "sedan", name: "Sedan" },
+  { id: "suv", name: "SUV" },
+  { id: "truck", name: "Truck" },
+  { id: "van", name: "Van" },
+  { id: "boat", name: "Boat" },
+  { id: "jet-ski", name: "Jet Ski" },
+  { id: "rv", name: "RV" },
+  { id: "motorcycle", name: "Motorcycle" }
+];
 
-// export const mainServices = [
-//   { id: "interior", name: "Interior Detailing", description: "Deep clean interior surfaces", packages: [] },
-//   { id: "exterior", name: "Exterior Detailing", description: "Wash and protect exterior surfaces", packages: [] },
-//   { id: "full", name: "Full Detailing", description: "Complete interior and exterior detailing", packages: [] }
-// ];
+/* ---------------------- TIME SLOTS ---------------------- */
+export const timeSlots = [
+  "9:00 AM - 11:00 AM", "11:00AM - 01:00 PM",
+  "01:00PM - 3:00 PM", "03:00PM - 5:00 PM"
+];
 
-/* ---------------------- MAIN SERVICES (global add-ons) ---------------------- */
-// export const mainServices = [
-//   {
-//     id: "window-tinting",
-//     name: "Window Tinting",
-//     // price: 80,
-//     description: "Professional window tinting (price may vary by vehicle size)",
-//     // pricingType: "fixed"
-//   },
-//   {
-//     id: "ceramic-coating",
-//     name: "Ceramic Coating",
-//     // price: 250,
-//     description: "Long-lasting paint protection (surface prep + ceramic application)",
-//     // pricingType: "fixed"
-//   },
-//   {
-//     id: "paint-correction",
-//     name: "Paint Correction",
-//     // price: 180,
-//     description: "Multi-stage paint correction to remove swirls and imperfections",
-//     // pricingType: "fixed"
-//   },
-//   {
-//     id: "mobile-detailing",
-//     name: "Mobile Detailing",
-//     // price: 40,
-//     description: "On-site detailing service (travel fee may apply)",
-//     // pricingType: "fixed"
-//   }
-// ];
-
-// 
+/* ---------------------- PROMO CODES ---------------------- */
+export const promoCodes = [
+  { code: "WELCOME15", discount: 15 },
+  { code: "WASH10", discount: 15 },
+  { code: "DETAIL15", discount: 15 },
+  { code: "BOAT20", discount: 15 },
+  { code: "SUMMER25", discount: 15 }
+];
 
 
+/* ---------------------- UPDATED MAIN SERVICES ---------------------- */
 export const mainServices = [
   {
-    id: "window-tinting",
-    name: "Window Tinting",
-    description: "Professional window tinting services for all vehicle types",
+    id: "ceramic-coating",
+    name: "Ceramic Coating",
+    description: "Long-lasting paint protection with multiple warranty options",
     packages: [
       {
-        id: "basic-tint",
-        name: "Basic Tint",
-        price: 150,
-        description: "Standard window film with UV protection",
-        includes: [
-          "Side windows tinting",
-          "Basic UV protection", 
-          "1-year warranty",
-          "Professional installation"
-        ],
-        pricingType: "fixed"
+        id: "ceramic-1year",
+        name: "1 Year Ceramic Coating",
+        price: 379,
+        description: "1-year warranty ceramic coating protection",
+        pricingType: "fixed",
+        includes: ["Surface Preparation", "1-Year Ceramic Application", "Basic Maintenance Guide"]
       },
       {
-        id: "premium-tint",
-        name: "Premium Tint",
-        price: 250,
-        description: "High-quality ceramic window film",
-        includes: [
-          "All windows tinting",
-          "Ceramic heat rejection",
-          "99% UV protection",
-          "5-year warranty",
-          "Professional installation"
-        ],
-        pricingType: "fixed"
+        id: "ceramic-5year",
+        name: "5 Year Ceramic Coating", 
+        price: 579,
+        description: "5-year warranty ceramic coating protection",
+        pricingType: "fixed",
+        includes: ["Surface Preparation", "5-Year Ceramic Application", "Premium Maintenance Guide"]
       },
       {
-        id: "luxury-tint",
-        name: "Luxury Tint",
-        price: 350,
-        description: "Premium ceramic tint with maximum heat rejection",
-        includes: [
-          "All windows + windshield strip",
-          "Maximum heat rejection",
-          "100% UV protection", 
-          "Lifetime warranty",
-          "Professional installation",
-          "Water spot resistance"
-        ],
-        pricingType: "fixed"
+        id: "ceramic-10year",
+        name: "10 Year Ceramic Coating",
+        price: 779,
+        description: "10-year warranty ceramic coating protection",
+        pricingType: "fixed",
+        includes: ["Surface Preparation", "10-Year Ceramic Application", "Full Maintenance Kit"]
+      },
+      {
+        id: "ceramic-with-correction",
+        name: "Ceramic Coating with Paint Correction",
+        price: 179,
+        description: "Paint correction added to ceramic coating service",
+        pricingType: "fixed",
+        includes: ["Multi-stage Paint Correction", "Ceramic Coating Application", "Surface Perfection"]
       }
     ]
   },
   {
-    id: "ceramic-coating",
-    name: "Ceramic Coating",
-    description: "Long-lasting paint protection with ceramic technology",
+    id: "window-tinting",
+    name: "Window Tinting",
+    description: "Professional window tinting services",
     packages: [
       {
-        id: "basic-coating",
-        name: "Basic Coating",
-        price: 300,
-        description: "1-year ceramic coating protection",
-        includes: [
-          "Surface preparation",
-          "1-layer ceramic coating",
-          "1-year protection",
-          "Basic gloss enhancement",
-          "Water beading effect"
-        ],
-        pricingType: "fixed"
+        id: "tint-side-windows",
+        name: "Side Windows Tinting",
+        price: 89,
+        description: "Tinting for all side windows",
+        pricingType: "fixed",
+        includes: ["Side Windows Tinting", "Quality Tint Material", "Professional Installation"]
       },
       {
-        id: "premium-coating",
-        name: "Premium Coating",
-        price: 500,
-        description: "3-year professional ceramic coating",
-        includes: [
-          "Full paint correction",
-          "2-layer ceramic coating", 
-          "3-year protection",
-          "High gloss finish",
-          "Chemical resistance",
-          "Professional application"
-        ],
-        pricingType: "fixed"
+        id: "tint-rear-windshield",
+        name: "Rear Windshield Tinting",
+        price: 119,
+        description: "Tinting for rear windshield",
+        pricingType: "fixed",
+        includes: ["Rear Windshield Tinting", "Quality Tint Material", "Professional Installation"]
       },
       {
-        id: "signature-coating",
-        name: "Signature Coating",
-        price: 800,
-        description: "5-year premium ceramic coating with warranty",
-        includes: [
-          "Multi-stage paint correction",
-          "3-layer ceramic coating",
-          "5-year warranty",
-          "Maximum gloss enhancement",
-          "Scratch resistance",
-          "Professional certification",
-          "Maintenance kit included"
-        ],
-        pricingType: "fixed"
+        id: "tint-front-windshield",
+        name: "Front Windshield Tinting",
+        price: 200,
+        description: "Tinting for front windshield",
+        pricingType: "fixed",
+        includes: ["Front Windshield Tinting", "Quality Tint Material", "Professional Installation"]
+      },
+      {
+        id: "tint-brow",
+        name: "Windshield Brow Tinting",
+        price: 79,
+        description: "Tinting for windshield brow",
+        pricingType: "fixed",
+        includes: ["Windshield Brow Tinting", "Quality Tint Material", "Professional Installation"]
+      },
+      {
+        id: "tint-roof",
+        name: "Roof Tinting",
+        price: 99,
+        description: "Tinting for roof glass",
+        pricingType: "fixed",
+        includes: ["Roof Glass Tinting", "Quality Tint Material", "Professional Installation"]
       }
     ]
   },
   {
     id: "paint-correction",
     name: "Paint Correction",
-    description: "Professional paint correction to restore your vehicle's finish",
+    description: "Multi-stage paint correction to remove swirls and imperfections",
     packages: [
       {
-        id: "single-stage",
-        name: "Single Stage",
-        price: 200,
-        description: "Basic paint correction for minor imperfections",
-        includes: [
-          "Single-stage compounding",
-          "Minor swirl removal",
-          "Basic polishing",
-          "Surface cleaning",
-          "Hand application"
-        ],
-        pricingType: "fixed"
+        id: "paint-correction-basic",
+        name: "Basic Paint Correction",
+        price: 180,
+        description: "Single-stage paint correction",
+        pricingType: "fixed",
+        includes: ["Single-stage Correction", "Swirl Removal", "Basic Polish"]
       },
       {
-        id: "two-stage",
-        name: "Two Stage",
-        price: 350,
-        description: "Advanced paint correction for moderate defects",
-        includes: [
-          "Two-stage correction",
-          "Compound + polish",
-          "Swirl and scratch removal",
-          "Medium gloss enhancement", 
-          "Machine polishing"
-        ],
-        pricingType: "fixed"
-      },
-      {
-        id: "showroom",
-        name: "Showroom Finish",
-        price: 600,
-        description: "Multi-stage correction for showroom perfection",
-        includes: [
-          "Multi-stage correction",
-          "Compound + polish + finish",
-          "Complete defect removal",
-          "Maximum gloss enhancement",
-          "Paint depth preservation",
-          "Showroom ready finish"
-        ],
-        pricingType: "fixed"
+        id: "paint-correction-premium",
+        name: "Premium Paint Correction", 
+        price: 280,
+        description: "Multi-stage paint correction",
+        pricingType: "fixed",
+        includes: ["Multi-stage Correction", "Deep Scratch Removal", "Premium Polish"]
       }
     ]
   },
   {
     id: "mobile-detailing",
     name: "Mobile Detailing",
-    description: "Professional detailing services at your location",
+    description: "On-site detailing service with all detailing packages",
     packages: [
+      // Sedan Packages
       {
-        id: "basic-mobile",
-        name: "Basic Mobile",
-        price: 80,
-        description: "Essential mobile detailing package",
-        includes: [
-          "Exterior wash and dry",
-          "Interior vacuuming",
-          "Window cleaning",
-          "Tire dressing",
-          "Basic interior wipe-down"
-        ],
-        pricingType: "fixed"
+        id: "mobile-sedan-basic-full",
+        name: "Sedan Basic Full Package (Mobile)",
+        price: 240, // Added mobile fee
+        description: "Basic interior and exterior package for sedans - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Interior Package", "Basic Exterior Package", "Mobile Service Fee"]
       },
       {
-        id: "premium-mobile",
-        name: "Premium Mobile", 
-        price: 150,
-        description: "Comprehensive mobile detailing service",
-        includes: [
-          "Full exterior wash",
-          "Interior deep cleaning",
-          "Window cleaning inside/out",
-          "Tire and wheel cleaning",
-          "Interior conditioning",
-          "Door jambs cleaning"
-        ],
-        pricingType: "fixed"
+        id: "mobile-sedan-premium-full",
+        name: "Sedan Premium Full Package (Mobile)",
+        price: 310, // Added mobile fee
+        description: "Premium interior and exterior package for sedans - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Interior Package", "Premium Exterior Package", "Mobile Service Fee"]
       },
       {
-        id: "elite-mobile",
-        name: "Elite Mobile",
-        price: 250,
-        description: "Complete mobile detailing with protection",
-        includes: [
-          "Full exterior detail",
-          "Interior deep clean",
-          "Quick wax application",
-          "Interior protection",
-          "Engine bay cleaning",
-          "Full interior conditioning"
-        ],
-        pricingType: "fixed"
-      }
-    ]
-  },
-  {
-    id: "interior-detailing",
-    name: "Interior Detailing", 
-    description: "Deep cleaning and protection for your vehicle's interior",
-    packages: [
-      {
-        id: "basic-interior",
-        name: "Basic Interior",
-        price: 100,
-        description: "Essential interior cleaning package",
-        includes: [
-          "Complete vacuuming",
-          "Dashboard cleaning",
-          "Door panel cleaning",
-          "Window cleaning",
-          "Basic upholstery cleaning"
-        ],
-        pricingType: "fixed"
+        id: "mobile-sedan-basic-interior",
+        name: "Sedan Basic Interior Only (Mobile)",
+        price: 200, // Added mobile fee
+        description: "Basic interior package only (sedan) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Interior Package", "Mobile Service Fee"]
       },
       {
-        id: "premium-interior",
-        name: "Premium Interior",
-        price: 180,
-        description: "Deep interior cleaning and conditioning",
-        includes: [
-          "Deep vacuuming all areas",
-          "Leather/vinyl conditioning",
-          "Carpet shampooing",
-          "Headliner cleaning",
-          "Vent cleaning",
-          "Odor elimination"
-        ],
-        pricingType: "fixed"
+        id: "mobile-sedan-premium-interior",
+        name: "Sedan Premium Interior Only (Mobile)",
+        price: 240, // Added mobile fee
+        description: "Premium interior package only (sedan) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Interior Package", "Mobile Service Fee"]
       },
       {
-        id: "complete-interior",
-        name: "Complete Interior",
-        price: 300,
-        description: "Full interior restoration and protection",
-        includes: [
-          "Complete deep cleaning",
-          "Leather treatment",
-          "Carpet extraction",
-          "Fabric protection",
-          "AC vent sanitization",
-          "Interior ceramic coating",
-          "Odor neutralization"
-        ],
-        pricingType: "fixed"
-      }
-    ]
-  },
-  {
-    id: "exterior-detailing",
-    name: "Exterior Detailing",
-    description: "Complete exterior cleaning and protection services",
-    packages: [
-      {
-        id: "basic-exterior",
-        name: "Basic Exterior",
-        price: 80,
-        description: "Essential exterior cleaning package",
-        includes: [
-          "Hand wash and dry",
-          "Tire and wheel cleaning",
-          "Window cleaning",
-          "Tire dressing",
-          "Basic drying"
-        ],
-        pricingType: "fixed"
+        id: "mobile-sedan-basic-exterior",
+        name: "Sedan Basic Exterior Only (Mobile)",
+        price: 190, // Added mobile fee
+        description: "Basic exterior package only (sedan) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Exterior Package", "Mobile Service Fee"]
       },
       {
-        id: "premium-exterior",
-        name: "Premium Exterior",
-        price: 150,
-        description: "Comprehensive exterior detailing",
-        includes: [
-          "Full hand wash",
-          "Clay bar treatment",
-          "Hand wax application",
-          "Wheel well cleaning",
-          "Trim restoration",
-          "Exterior protection"
-        ],
-        pricingType: "fixed"
+        id: "mobile-sedan-premium-exterior",
+        name: "Sedan Premium Exterior Only (Mobile)",
+        price: 220, // Added mobile fee
+        description: "Premium exterior package only (sedan) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Exterior Package", "Mobile Service Fee"]
+      },
+      // SUV Packages
+      {
+        id: "mobile-suv-basic-full",
+        name: "SUV Basic Full Package (Mobile)",
+        price: 280, // Added mobile fee
+        description: "Basic interior and exterior package for SUVs - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Interior Package", "Basic Exterior Package", "Mobile Service Fee"]
       },
       {
-        id: "showroom-exterior",
-        name: "Showroom Exterior",
-        price: 250,
-        description: "Premium exterior restoration",
-        includes: [
-          "Full decontamination",
-          "Clay bar treatment",
-          "Machine polishing",
-          "Sealant application",
-          "Trim restoration",
-          "Glass treatment",
-          "Long-lasting protection"
-        ],
-        pricingType: "fixed"
-      }
-    ]
-  },
-  {
-    id: "headlight-restoration",
-    name: "Headlight Restoration",
-    description: "Professional headlight restoration services",
-    packages: [
-      {
-        id: "basic-headlight",
-        name: "Basic Restoration",
-        price: 60,
-        description: "Standard headlight restoration",
-        includes: [
-          "Headlight sanding",
-          "Polishing compound",
-          "Basic UV protection",
-          "Clarity restoration"
-        ],
-        pricingType: "fixed"
+        id: "mobile-suv-premium-full",
+        name: "SUV Premium Full Package (Mobile)",
+        price: 370, // Added mobile fee
+        description: "Premium interior and exterior package for SUVs - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Interior Package", "Premium Exterior Package", "Mobile Service Fee"]
       },
       {
-        id: "premium-headlight", 
-        name: "Premium Restoration",
-        price: 100,
-        description: "Advanced headlight restoration with protection",
-        includes: [
-          "Multi-stage sanding",
-          "Professional polishing",
-          "UV protective coating",
-          "2-year warranty",
-          "Maximum clarity restoration"
-        ],
-        pricingType: "fixed"
-      }
-    ]
-  },
-  {
-    id: "engine-detailing",
-    name: "Engine Detailing",
-    description: "Professional engine bay cleaning and detailing",
-    packages: [
-      {
-        id: "basic-engine",
-        name: "Basic Engine",
-        price: 70,
-        description: "Essential engine bay cleaning",
-        includes: [
-          "Engine degreasing",
-          "Rinse and dry",
-          "Basic dressing",
-          "Safety cover-up"
-        ],
-        pricingType: "fixed"
+        id: "mobile-suv-basic-interior",
+        name: "SUV Basic Interior Only (Mobile)",
+        price: 240, // Added mobile fee
+        description: "Basic interior package only (SUV) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Interior Package", "Mobile Service Fee"]
       },
       {
-        id: "premium-engine",
-        name: "Premium Engine",
-        price: 120,
-        description: "Complete engine bay detailing",
-        includes: [
-          "Full degreasing",
-          "Steam cleaning",
-          "Protective coating",
-          "Hose conditioning",
-          "Plastic restoration",
-          "Professional finish"
-        ],
-        pricingType: "fixed"
+        id: "mobile-suv-premium-interior",
+        name: "SUV Premium Interior Only (Mobile)",
+        price: 290, // Added mobile fee
+        description: "Premium interior package only (SUV) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Interior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-suv-basic-exterior",
+        name: "SUV Basic Exterior Only (Mobile)",
+        price: 220, // Added mobile fee
+        description: "Basic exterior package only (SUV) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Exterior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-suv-premium-exterior",
+        name: "SUV Premium Exterior Only (Mobile)",
+        price: 250, // Added mobile fee
+        description: "Premium exterior package only (SUV) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Exterior Package", "Mobile Service Fee"]
+      },
+      // Truck Packages
+      {
+        id: "mobile-truck-basic-full",
+        name: "Truck Basic Full Package (Mobile)",
+        price: 300, // Added mobile fee
+        description: "Basic interior and exterior package for trucks - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Interior Package", "Basic Exterior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-truck-premium-full",
+        name: "Truck Premium Full Package (Mobile)",
+        price: 390, // Added mobile fee
+        description: "Premium interior and exterior package for trucks - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Interior Package", "Premium Exterior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-truck-basic-interior",
+        name: "Truck Basic Interior Only (Mobile)",
+        price: 250, // Added mobile fee
+        description: "Basic interior package only (truck) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Interior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-truck-premium-interior",
+        name: "Truck Premium Interior Only (Mobile)",
+        price: 300, // Added mobile fee
+        description: "Premium interior package only (truck) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Interior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-truck-basic-exterior",
+        name: "Truck Basic Exterior Only (Mobile)",
+        price: 240, // Added mobile fee
+        description: "Basic exterior package only (truck) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Exterior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-truck-premium-exterior",
+        name: "Truck Premium Exterior Only (Mobile)",
+        price: 280, // Added mobile fee
+        description: "Premium exterior package only (truck) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Exterior Package", "Mobile Service Fee"]
+      },
+      // Van Packages
+      {
+        id: "mobile-van-basic-full",
+        name: "Van Basic Full Package (Mobile)",
+        price: 270, // Added mobile fee
+        description: "Basic interior and exterior package for vans - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Interior Package", "Basic Exterior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-van-premium-full",
+        name: "Van Premium Full Package (Mobile)",
+        price: 360, // Added mobile fee
+        description: "Premium interior and exterior package for vans - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Interior Package", "Premium Exterior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-van-basic-interior",
+        name: "Van Basic Interior Only (Mobile)",
+        price: 230, // Added mobile fee
+        description: "Basic interior package only (van) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Interior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-van-premium-interior",
+        name: "Van Premium Interior Only (Mobile)",
+        price: 270, // Added mobile fee
+        description: "Premium interior package only (van) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Interior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-van-basic-exterior",
+        name: "Van Basic Exterior Only (Mobile)",
+        price: 210, // Added mobile fee
+        description: "Basic exterior package only (van) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Basic Exterior Package", "Mobile Service Fee"]
+      },
+      {
+        id: "mobile-van-premium-exterior",
+        name: "Van Premium Exterior Only (Mobile)",
+        price: 245, // Added mobile fee
+        description: "Premium exterior package only (van) - Mobile Service",
+        pricingType: "fixed",
+        includes: ["Premium Exterior Package", "Mobile Service Fee"]
       }
     ]
   }
 ];
-
-export { promoCodes } from './promocode';

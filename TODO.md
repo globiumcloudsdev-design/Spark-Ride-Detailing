@@ -1,13 +1,13 @@
-# Update Booking Form to Match Spark Ride Theme
+# TODO: Replace "Decent Auto Detailing" with "Spark Ride"
 
-## Tasks
-- [ ] Update overall container backgrounds from dark to light
-- [ ] Replace red accent color (#E53935) with primary blue (#10B5DB)
-- [ ] Update text colors from white to dark (foreground)
-- [ ] Update card backgrounds and borders to match theme
-- [ ] Update input/select backgrounds to white with dark text
-- [ ] Update progress indicators to use primary blue
-- [ ] Update button styles to match theme
-- [ ] Update confirmation modal styling
-- [ ] Test form functionality and responsiveness
-- [ ] Verify animations and transitions work smoothly
+- [ ] src/app/layout.tsx: Replace in metadata, openGraph, twitter, schema markup
+- [ ] src/pages/Contact.tsx: Replace in title attribute
+- [ ] src/pages/NotFound.tsx: Replace in document.title
+- [ ] src/components/BookingForm.tsx: Replace in WEBSITE_NAME constant
+- [ ] src/app/(pages)/services/mobile-detailing/page.tsx: Replace in metadata, openGraph
+- [ ] src/app/(pages)/services/window-tinting/page.tsx: Replace in metadata, openGraph
+- [ ] src/app/(pages)/services/ceramic-coating/page.tsx: Replace in metadata, openGraph
+- [ ] src/app/(pages)/gallery/page.tsx: Replace in metadata, openGraph
+- [ ] src/app/(pages)/services/all-services/page.tsx: Replace in metadata, openGraph
+- [ ] src/app/(pages)/contact/page.tsx: Replace in metadata, openGraph
+- [ ] src/app/(pages)/booking/page.tsx: Replace in metadata, openGraph
