@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { serviceTypes, timeSlots, mainServices } from "@/Data/booking-service";
-import { allCities } from "@/Data/stateMapping";
+import { serviceTypes, timeSlots, mainServices } from "@/data/booking-service";
+import { allCities } from "@/data/stateMapping";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
