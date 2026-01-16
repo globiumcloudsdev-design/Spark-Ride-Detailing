@@ -86,12 +86,11 @@ const Navbar = () => {
                     >
                       <button className="text-gray-700 hover:text-[#10B5DB] border border-transparent hover:border-[#10B5DB] px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 relative group flex items-center space-x-1 font-['Poppins']">
                         <span>{link.name}</span>
-                        <ChevronDown 
+                        <ChevronDown
                           className={`ml-1 h-4 w-4 transition-transform duration-300 ${
                             isServicesHover ? 'rotate-180' : ''
-                          }`} 
+                          }`}
                         />
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#10B5DB] transition-all duration-300 group-hover:w-full"></span>
                       </button>
 
                       <AnimatePresence>
@@ -124,7 +123,6 @@ const Navbar = () => {
                       className="text-gray-700 hover:text-[#10B5DB] border border-transparent hover:border-[#10B5DB] px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-['Poppins']"
                     >
                       {link.name}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#10B5DB] transition-all duration-300 group-hover:w-full"></span>
                     </Link>
                   )}
                 </div>

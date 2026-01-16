@@ -559,15 +559,23 @@ const BookingForm = () => {
       const bookingData = {
         bookingId: newBookingId,
         webName: WEBSITE_NAME,
-        formData: formData,
+        vendorName: "Spark Ride Detailing",
+        bookingType: "vehicle",
+        formData: {
+          ...formData,
+          bookingDetails: formData.vehicleBookings // Add bookingDetails for new schema
+        },
         totalPrice: totalPrice,
         discountedPrice: discountedPrice,
         discountApplied: !!appliedPromo,
         discountPercent: appliedPromo?.discount || 0,
         promoCode: appliedPromo?.code || null,
+        promoCodeId: null,
         submittedAt: new Date().toISOString(),
         vehicleCount: formData.vehicleBookings.length,
-        status: "pending"
+        serviceCount: 1,
+        status: "pending",
+        cancellationReason: null
       };
 
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/booking`, {
@@ -591,7 +599,7 @@ const BookingForm = () => {
       toast.error('Network error - please try again');
     } finally {
       setIsSubmitting(false);
-    }
+    } 
   };
 
   const closeConfirmation = () => {
