@@ -7,17 +7,18 @@ import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 export default function Footer() {
   const quickLinks = [
     { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
+    { name: "Services", path: "/services/all-services" },
+    { name: "Gallery", path: "/gallery" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
 
-  const packageNames = [
-    "Window Tinting",
-    "Ceramic Coating", 
-    "Paint Correction",
-    "Mobile Detailing",
-    "Engine Detailing",
+  const packageLinks = [
+    { name: "Window Tinting", path: "/services/window-tinting" },
+    { name: "Ceramic Coating", path: "/services/ceramic-coating" },
+    { name: "All Services", path: "/services/all-services" },
+    { name: "Mobile Detailing", path: "/services/mobile-detailing" },
+    { name: "Engine Detailing", path: "/services/all-services" },
   ];
 
   const contactInfo = [
@@ -81,13 +82,13 @@ export default function Footer() {
               Our Packages
             </h3>
             <ul className="space-y-2">
-              {packageNames.map((pkg) => (
-                <li key={pkg}>
+              {packageLinks.map((pkg) => (
+                <li key={pkg.name}>
                   <Link
-                    href="/services"
+                    href={pkg.path}
                     className="text-gray-600 hover:text-[#10B5DB] transition-colors duration-300 cursor-pointer"
                   >
-                    {pkg}
+                    {pkg.name}
                   </Link>
                 </li>
               ))}
